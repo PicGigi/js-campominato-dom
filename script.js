@@ -12,13 +12,13 @@ playButton.addEventListener('click', function() {
     const howMany = document.getElementById("difficulty").value;   //qui assegniamo a "howMany" un valore di 100, 81 o 49, preso direttamente dal select nell'HTML
 
     // CREAZIONE E GRANDEZZA QUADRATI
-    for (let i = 1; i <= howMany; i++) {   //questo for avviene tante volte quanto il numero di celle (howMany)
+    for (let i = 1; i <= howMany; i++) {   //questo for avviene tante volte quanto il numero di quadratini (howMany)
 
         if (howMany == 100){
             eleSquares.innerHTML += `<div class="sq easy">${i}</div>`;   //creo il div con la classe .sq già dentro  (la classe .sq ci servirà dopo per creare un array con tutti i quadratini)
         }
         else if (howMany == 81){
-            eleSquares.innerHTML += `<div class="sq medium">${i}</div>`;   //easy, medium e hard servono solo per dare una grandezza ai qudratini che ho già impostato nel CSS
+            eleSquares.innerHTML += `<div class="sq medium">${i}</div>`;   //easy, medium e hard servono solo per dare una grandezza ai quadratini che ho già impostato nel CSS
         }
         else if (howMany == 49){
             eleSquares.innerHTML += `<div class="sq hard">${i}</div>`;
@@ -53,8 +53,8 @@ playButton.addEventListener('click', function() {
         square[i].addEventListener('click', 
             function() {
                 let victory = document.querySelectorAll('.selected');   //questo serve per contare il punteggio finale
-                if(mines.includes(i+1)) {
-                    for(i=0; i<howManyMines; i++) {   // questo for avviene tante volte quanto il numeri di mine (howManyMines)
+                if(mines.includes(i+1)) {   //controllo per vedere se abbiamo selezionato una mina
+                    for(i=0; i<howManyMines; i++) {   // questo for avviene tante volte quanto il numero di mine (howManyMines)
                         square[mines[i]-1].classList.add('esplosa');   //seleziona TUTTE le mine quando ne viene cliccata una
                     }
                     eleSquares.innerHTML += `<div class="endgame"> <div>Hai perso!</div> <div class="score">Punteggio: ${victory.length - 1}</div> </div>`;  //schermata finale
